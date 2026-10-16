@@ -23,9 +23,7 @@ class InvitationAudioPlayer {
   private currentSourceIndex = 0;
 
   constructor() {
-    if (typeof window !== "undefined") {
-      this.initAudio();
-    }
+    // Lazy initialized when user opens invitation to prevent initial bandwidth congestion
   }
 
   private initAudio() {
@@ -34,7 +32,7 @@ class InvitationAudioPlayer {
     try {
       this.audio = new Audio();
       this.audio.loop = true;
-      this.audio.preload = "auto";
+      this.audio.preload = "none";
       this.audio.volume = 0.75;
       this.audio.src = this.audioSources[this.currentSourceIndex];
 

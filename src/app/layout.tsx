@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import type { Metadata, Viewport } from "next";
 import { Cinzel, Cormorant_Garamond, Alex_Brush, Outfit } from "next/font/google";
 import "./globals.css";
@@ -6,14 +7,14 @@ import { EVENT_DETAILS } from "@/lib/event";
 const cinzel = Cinzel({
   subsets: ["latin"],
   variable: "--font-cinzel",
-  weight: ["400", "600", "700", "800", "900"],
+  weight: ["600", "700"],
   display: "swap",
 });
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-cormorant",
-  weight: ["400", "500", "600", "700"],
+  weight: ["500", "700"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -28,7 +29,7 @@ const alexBrush = Alex_Brush({
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "600"],
   display: "swap",
 });
 
@@ -80,6 +81,14 @@ export default function RootLayout({
       lang="gu"
       className={`light-theme ${cinzel.variable} ${cormorant.variable} ${alexBrush.variable} ${outfit.variable} scroll-smooth`}
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Anek+Gujarati:wght@400;600;700&family=Noto+Serif+Gujarati:wght@600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="bg-royal-darkest text-gold-100 font-sans antialiased selection:bg-gold-500 selection:text-royal-darkest overflow-x-hidden">
         {children}
       </body>
