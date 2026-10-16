@@ -26,7 +26,7 @@ export function LanguageSelectorModal() {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
         transition={{ duration: 0.7 }}
-        className="fixed inset-0 z-[100] flex items-center justify-center bg-radial-maroon p-4 sm:p-6 overflow-y-auto select-none"
+        className="fixed inset-0 z-[100] flex items-center justify-center bg-[#150207] bg-[radial-gradient(ellipse_at_top,_#42081d_0%,_#1a0208_60%,_#0a0104_100%)] p-4 sm:p-6 overflow-y-auto select-none"
       >
         {/* Ambient Lights */}
         <div className="absolute w-[450px] h-[450px] rounded-full bg-gold-500/15 blur-[120px] pointer-events-none -top-16 -left-16" />
@@ -37,8 +37,8 @@ export function LanguageSelectorModal() {
           initial={{ scale: 0.9, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.95, opacity: 0, y: -20 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative max-w-xl w-full p-6 sm:p-10 text-center rounded-3xl bg-royal-card/95 border-2 border-gold-400/50 backdrop-blur-2xl shadow-[0_30px_90px_rgba(0,0,0,0.9)]"
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="relative max-w-xl w-full p-6 sm:p-10 text-center rounded-3xl bg-[#24040e] border-2 border-gold-400/60 shadow-[0_30px_90px_rgba(0,0,0,0.95)]"
         >
           {/* Corner Filigrees */}
           <div className="absolute top-3 left-3 w-7 h-7 border-t-2 border-l-2 border-gold-400 rounded-tl-lg" />

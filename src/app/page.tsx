@@ -25,12 +25,6 @@ function InvitationContent() {
   return (
     <SmoothScroll>
       <main className="relative min-h-screen bg-royal-darkest text-gold-100 overflow-x-hidden bg-grain transition-colors duration-700">
-        {/* Floating Background Petals & Gold Dust */}
-        <PetalsCanvas />
-
-        {/* Unified Top Navigation (Language, Theme Palette & Music) */}
-        <TopNavbar />
-
         {/* First-Time Language Selector Modal */}
         <LanguageSelectorModal />
 
@@ -39,22 +33,26 @@ function InvitationContent() {
           <IntroSequence onComplete={() => setHasOpened(true)} />
         )}
 
-        {/* Invitation Content Sections */}
-        <div
-          className={`transition-opacity duration-1000 ${
-            hasOpened ? "opacity-100" : "opacity-90"
-          }`}
-        >
-          <HeroSection />
-          <BlessingsSection />
-          <SpecialDaySection />
-          <ProposalArchSection />
-          <DateSection />
-          <VenueSection />
-          <FamilySection />
-          <ContactSection />
-          <ClosingSection />
-        </div>
+        {/* Unified Top Navigation (Only shown once opened) */}
+        {hasOpened && <TopNavbar />}
+
+        {/* Floating Background Petals & Gold Dust (Only active once opened) */}
+        {hasOpened && <PetalsCanvas />}
+
+        {/* Invitation Content Sections - strictly rendered once user opens */}
+        {hasOpened ? (
+          <div className="animate-fade-in duration-500">
+            <HeroSection />
+            <BlessingsSection />
+            <SpecialDaySection />
+            <ProposalArchSection />
+            <DateSection />
+            <VenueSection />
+            <FamilySection />
+            <ContactSection />
+            <ClosingSection />
+          </div>
+        ) : null}
       </main>
     </SmoothScroll>
   );
