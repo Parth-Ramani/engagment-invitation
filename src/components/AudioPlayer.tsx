@@ -16,9 +16,11 @@ export function AudioPlayer({ embedded = false }: AudioPlayerProps) {
 
   useEffect(() => {
     setMounted(true);
-    // Sync state
     if (ambientAudio) {
-      setIsPlaying(ambientAudio.getIsPlaying());
+      const unsubscribe = ambientAudio.subscribe((playing) => {
+        setIsPlaying(playing);
+      });
+      return () => unsubscribe();
     }
   }, []);
 
