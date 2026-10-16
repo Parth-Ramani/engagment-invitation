@@ -1,27 +1,259 @@
+@import url('https://fonts.googleapis.com/css2?family=Anek+Gujarati:wght@300;400;500;600;700;800&family=Noto+Serif+Gujarati:wght@400;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--theme-darkest, #FAF5EB);
+  --foreground: #2A0612;
+  --theme-darkest: #FAF5EB;
+  --theme-dark: #F4EDE0;
+  --theme-maroon: #ECE0CE;
+  --theme-wine: #DFCEB8;
+  --theme-deepRuby: #CDB799;
+  --theme-ruby: #9B7126;
+  --theme-crimson: #6D4F17;
+  --theme-card-1: rgba(255, 253, 248, 0.95);
+  --theme-card-2: rgba(247, 240, 227, 0.97);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ==========================================================================
+   GUJARATI TYPOGRAPHY & WORD-BREAK FIXES
+   Prevents Gujarati syllables, conjuncts (જોડાક્ષર), and matras from breaking
+   awkwardly across line wraps. Disables wide letter-spacing which causes letters
+   to detach from vowels.
+   ========================================================================== */
+html[lang="gu"],
+[data-lang="gu"],
+.font-gujarati {
+  font-family: 'Anek Gujarati', 'Noto Serif Gujarati', var(--font-outfit), sans-serif;
+  word-break: keep-all !important;
+  overflow-wrap: break-word !important;
+  hyphens: none !important;
+  -webkit-hyphens: none !important;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+html[lang="gu"] body {
+  word-break: keep-all;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+html[lang="gu"] h1,
+html[lang="gu"] h2,
+html[lang="gu"] h3 {
+  font-family: 'Noto Serif Gujarati', 'Anek Gujarati', serif !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
+  line-height: 1.35 !important;
+  word-break: keep-all !important;
+}
+
+html[lang="gu"] p,
+html[lang="gu"] span,
+html[lang="gu"] button,
+html[lang="gu"] a {
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
+  word-break: keep-all !important;
+}
+
+/* Ensure no wide tracking ever splits Gujarati letters */
+html[lang="gu"] [class*="tracking-"] {
+  letter-spacing: 0.02em !important;
+}
+
+/* ==========================================================================
+   LIGHT THEME BACKGROUND & PALETTE STYLING
+   Royal Ivory Silk & Rose Gold Light Theme with pristine contrast and luxury
+   ========================================================================== */
+html.light-theme {
+  --background: var(--theme-darkest, #FAF5EB);
+  --foreground: #2A0612;
+  color: #2A0612;
+}
+
+html.light-theme body {
+  background-color: var(--theme-darkest, #FAF5EB) !important;
+  color: #2A0612 !important;
+}
+
+/* Light Theme Typography & Readability */
+html.light-theme .text-gold-100,
+html.light-theme .text-gold-200,
+html.light-theme .text-gold-200\/90,
+html.light-theme .text-gold-200\/80 {
+  color: #2D0817 !important; /* deep royal mahogany/burgundy for readable body text */
+}
+
+html.light-theme .text-gold-300,
+html.light-theme .text-gold-300\/90,
+html.light-theme .text-gold-300\/80,
+html.light-theme .text-gold-300\/70 {
+  color: #6C4207 !important; /* rich antique bronze gold */
+}
+
+html.light-theme .text-gold-400,
+html.light-theme .text-gold-400\/80,
+html.light-theme .text-gold-400\/70,
+html.light-theme .text-gold-400\/60 {
+  color: #8C570A !important; /* antique warm gold */
+}
+
+html.light-theme .text-gold-gradient {
+  background: linear-gradient(135deg, #613400 0%, #8C590E 25%, #4F2800 50%, #7D4C06 75%, #3D1C00 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.7));
+}
+
+html.light-theme .text-gold-glow {
+  text-shadow: 0 0 12px rgba(184, 134, 11, 0.25) !important;
+}
+
+/* Light Theme Cards & Containers */
+html.light-theme .bg-royal-darkest {
+  background-color: var(--theme-darkest, #FAF5EB) !important;
+}
+
+html.light-theme .bg-royal-dark,
+html.light-theme .bg-royal-dark\/80,
+html.light-theme .bg-royal-dark\/85,
+html.light-theme .bg-royal-dark\/90,
+html.light-theme .bg-royal-dark\/60,
+html.light-theme .bg-royal-dark\/50 {
+  background-color: rgba(255, 253, 248, 0.94) !important;
+  border-color: rgba(184, 134, 11, 0.35) !important;
+  box-shadow: 0 4px 20px rgba(100, 60, 20, 0.08) !important;
+}
+
+html.light-theme .bg-royal-card,
+html.light-theme .bg-royal-card\/95,
+html.light-theme .bg-royal-card\/85 {
+  background: linear-gradient(180deg, rgba(255, 254, 250, 0.96) 0%, rgba(247, 241, 230, 0.98) 100%) !important;
+  border-color: rgba(184, 134, 11, 0.35) !important;
+  box-shadow: 0 15px 45px -10px rgba(100, 60, 20, 0.12), 0 0 25px rgba(184, 134, 11, 0.08) !important;
+}
+
+html.light-theme .bg-royal-maroon\/60,
+html.light-theme .bg-royal-maroon\/70,
+html.light-theme .bg-royal-maroon\/80,
+html.light-theme .bg-royal-maroon\/90,
+html.light-theme .bg-royal-wine\/80 {
+  background-color: rgba(255, 252, 245, 0.92) !important;
+  border-color: rgba(184, 134, 11, 0.4) !important;
+}
+
+html.light-theme .from-royal-maroon\/70,
+html.light-theme .from-royal-maroon\/90 {
+  --tw-gradient-from: rgba(255, 252, 245, 0.96) var(--tw-gradient-from-position) !important;
+}
+
+html.light-theme .to-royal-darkest {
+  --tw-gradient-to: rgba(247, 240, 227, 0.98) var(--tw-gradient-to-position) !important;
+}
+
+html.light-theme .royal-border {
+  border-color: rgba(184, 134, 11, 0.45) !important;
+}
+html.light-theme .royal-border::before {
+  border-color: rgba(184, 134, 11, 0.25) !important;
+}
+
+html.light-theme .box-royal-glow {
+  box-shadow: 0 10px 35px -5px rgba(120, 60, 20, 0.15), 0 0 25px rgba(184, 134, 11, 0.12) !important;
+}
+
+html.light-theme .bg-grain {
+  background-image: radial-gradient(rgba(184, 134, 11, 0.08) 1px, transparent 0) !important;
+}
+
+/* Custom Royal Gold Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #14030A;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #D4AF37 0%, #7A5B12 100%);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FFE485;
+}
+
+html.light-theme ::-webkit-scrollbar-track {
+  background: #F4EDE0 !important;
+}
+html.light-theme ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #D4AF37 0%, #A67C1E 100%) !important;
+}
+
+/* Lenis Smooth Scroll styling */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Luxury Metallic Gold Text */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FFF6D3 0%, #F5D77F 25%, #D4AF37 50%, #FFEBA3 75%, #B89223 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.text-gold-glow {
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.4), 0 0 40px rgba(212, 175, 55, 0.2);
+}
+
+.box-gold-glow {
+  box-shadow: 0 0 35px -5px rgba(212, 175, 55, 0.2), inset 0 0 25px rgba(212, 175, 55, 0.05);
+}
+
+.box-royal-glow {
+  box-shadow: 0 10px 40px -10px rgba(84, 14, 40, 0.5), 0 0 30px rgba(212, 175, 55, 0.15);
+}
+
+/* Royal Arch & Ornament Styles */
+.royal-border {
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  position: relative;
+}
+
+.royal-border::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  pointer-events: none;
+}
+
+/* Subtle Film Grain Texture Overlay */
+.bg-grain {
+  background-image: radial-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
