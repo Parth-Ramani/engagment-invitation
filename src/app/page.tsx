@@ -9,7 +9,7 @@ import { IntroSequence } from "@/components/IntroSequence";
 import { HeroSection } from "@/components/HeroSection";
 import { BlessingsSection } from "@/components/BlessingsSection";
 import { SpecialDaySection } from "@/components/SpecialDaySection";
-import { CinematicRingExchange } from "@/components/CinematicRingExchange";
+import { ProposalArchSection } from "@/components/ProposalArchSection";
 import { DateSection } from "@/components/DateSection";
 import { VenueSection } from "@/components/VenueSection";
 import { FamilySection } from "@/components/FamilySection";
@@ -48,7 +48,7 @@ function InvitationContent() {
           <HeroSection />
           <BlessingsSection />
           <SpecialDaySection />
-          <CinematicRingExchange />
+          <ProposalArchSection />
           <DateSection />
           <VenueSection />
           <FamilySection />
