@@ -39,18 +39,18 @@ export function IntroSequence({ onComplete }: { onComplete: () => void }) {
             scale: 0.98,
             transition: { duration: 0.35, ease: "easeOut" },
           }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#150207] bg-[radial-gradient(ellipse_at_top,_#42081d_0%,_#1a0208_60%,_#0a0104_100%)] p-4 sm:p-6 overflow-hidden select-none will-change-[opacity,transform]"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-[#FAF5EB] bg-[radial-gradient(ellipse_at_center,_#FFFFFF_0%,_#FAF5EB_55%,_#EFE4D2_100%)] p-4 sm:p-6 overflow-hidden select-none will-change-[opacity,transform]"
         >
-          {/* Subtle Ambient Glowing Background circles */}
-          <div className="absolute w-[450px] h-[450px] rounded-full bg-gold-500/15 blur-[120px] pointer-events-none -top-16 -left-16" />
-          <div className="absolute w-[450px] h-[450px] rounded-full bg-royal-deepRuby/50 blur-[130px] pointer-events-none -bottom-16 -right-16" />
+          {/* Subtle Ambient Golden Glows */}
+          <div className="absolute w-[500px] h-[500px] rounded-full bg-gold-400/15 blur-[120px] pointer-events-none -top-16 -left-16" />
+          <div className="absolute w-[500px] h-[500px] rounded-full bg-gold-300/20 blur-[130px] pointer-events-none -bottom-16 -right-16" />
 
-          {/* Solid Royal Frame Card - completely opaque to prevent any text overlay */}
+          {/* Royal Ivory Frame Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.94, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="relative max-w-xl w-full p-6 sm:p-8 md:p-10 text-center rounded-3xl bg-[#24040e] border-2 border-gold-400/60 shadow-[0_30px_90px_rgba(0,0,0,0.95)]"
+            className="relative max-w-xl w-full p-6 sm:p-8 md:p-10 text-center rounded-3xl bg-[#FFFDF8] border-2 border-gold-400/60 shadow-[0_25px_70px_rgba(184,146,35,0.22)]"
           >
             {/* Ornate Corner Elements */}
             <div className="absolute top-3 left-3 w-7 h-7 border-t-2 border-l-2 border-gold-400 rounded-tl-lg" />
@@ -66,14 +66,14 @@ export function IntroSequence({ onComplete }: { onComplete: () => void }) {
 
             {/* Shree Ganeshay Namah */}
             <div className="mb-1">
-              <h2 className="font-royal text-gold-300 text-lg sm:text-2xl font-bold tracking-[0.2em] uppercase text-gold-glow break-keep">
+              <h2 className="font-royal text-[#8C570A] text-lg sm:text-2xl font-bold tracking-[0.2em] uppercase text-gold-glow break-keep">
                 {t.ganeshMantra}
               </h2>
             </div>
 
             {/* Jay Swaminarayan */}
             <div className="mb-2">
-              <p className="font-royal text-gold-200/90 text-sm sm:text-base font-semibold tracking-[0.25em] uppercase break-keep">
+              <p className="font-royal text-[#5C162A] text-sm sm:text-base font-semibold tracking-[0.25em] uppercase break-keep">
                 {t.swaminarayanMantra}
               </p>
             </div>
@@ -82,13 +82,13 @@ export function IntroSequence({ onComplete }: { onComplete: () => void }) {
 
             {/* Couple names invitation teaser */}
             <div className="my-3 sm:my-4 space-y-1">
-              <p className="font-script text-gold-300 text-xl sm:text-2xl break-keep">
+              <p className="font-script text-[#8C570A] text-xl sm:text-2xl break-keep">
                 {t.togetherFamilies}
               </p>
-              <h1 className="font-serif italic font-bold text-3xl sm:text-5xl text-gold-gradient py-1 break-keep">
+              <h1 className="font-serif italic font-bold text-3xl sm:text-5xl text-[#2A0612] py-1 break-keep">
                 {t.coupleNames}
               </h1>
-              <p className="font-sans text-xs sm:text-sm tracking-wide uppercase text-gold-200/80 break-keep">
+              <p className="font-sans text-xs sm:text-sm tracking-wide uppercase text-[#6D4F17] break-keep font-medium">
                 {t.eventTitle}
               </p>
             </div>
@@ -98,13 +98,13 @@ export function IntroSequence({ onComplete }: { onComplete: () => void }) {
               <button
                 type="button"
                 onClick={() => setWithMusic(!withMusic)}
-                className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-sans transition-colors border break-keep ${
+                className={`flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-sans transition-colors border break-keep cursor-pointer ${
                   withMusic
-                    ? "bg-gold-500/20 border-gold-400 text-gold-200"
-                    : "bg-royal-dark/60 border-gold-500/20 text-gold-400/60"
+                    ? "bg-gold-500/20 border-gold-400 text-[#6D4F17] font-semibold"
+                    : "bg-[#F4EDE0] border-gold-400/40 text-[#8C570A]/70"
                 }`}
               >
-                <Music className="w-3.5 h-3.5" />
+                <Music className="w-3.5 h-3.5 text-gold-600" />
                 <span>{withMusic ? t.melodyEnabled : t.melodyMuted}</span>
               </button>
             </div>
@@ -122,7 +122,7 @@ export function IntroSequence({ onComplete }: { onComplete: () => void }) {
 
               <button
                 onClick={handleSkip}
-                className="text-xs font-sans text-gold-400/80 hover:text-gold-200 underline underline-offset-4 transition-colors py-1 break-keep cursor-pointer"
+                className="text-xs font-sans text-[#8C570A] hover:text-[#2A0612] underline underline-offset-4 transition-colors py-1 break-keep cursor-pointer"
               >
                 {t.skipIntro}
               </button>
