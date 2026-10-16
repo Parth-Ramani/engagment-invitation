@@ -34,7 +34,12 @@ export function ProposalArchSection() {
         >
           {/* Main High-Resolution Proposal Illustration */}
           <picture className="w-full flex items-center justify-center">
-            {/* Transparent PNG version for seamless background blending */}
+            {/* Highly optimized WebP format (151KB vs 1000KB) */}
+            <source
+              srcSet="/images/parth-ankita-proposal.webp"
+              type="image/webp"
+            />
+            {/* Transparent PNG version fallback */}
             <source
               srcSet="/images/parth-ankita-proposal-transparent.png"
               type="image/png"

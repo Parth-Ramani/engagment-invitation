@@ -13,7 +13,6 @@ interface Petal {
   type: "rose" | "marigold" | "goldDust";
   opacity: number;
   oscillationSpeed: number;
-  oscillationDistance: number;
   seed: number;
 }
 
@@ -38,8 +37,59 @@ export function PetalsCanvas() {
     let height = (canvas.height = window.innerHeight);
 
     const isMobile = width < 768;
-    const petalCount = isMobile ? 22 : 45;
-    const dustCount = isMobile ? 35 : 70;
+    // Optimized particle counts for battery and GPU efficiency
+    const petalCount = isMobile ? 12 : 24;
+    const dustCount = isMobile ? 18 : 36;
+
+    /* -------------------------------------------------------------
+       Create Pre-rendered Sprites to eliminate runtime GC allocations
+       ------------------------------------------------------------- */
+    const createRoseSprite = () => {
+      const s = document.createElement("canvas");
+      s.width = 40;
+      s.height = 40;
+      const sctx = s.getContext("2d");
+      if (!sctx) return s;
+      sctx.translate(20, 10);
+      sctx.beginPath();
+      sctx.moveTo(0, 0);
+      sctx.bezierCurveTo(-14, -12, -16, 18, 0, 26);
+      sctx.bezierCurveTo(16, 18, 14, -12, 0, 0);
+      const grad = sctx.createLinearGradient(0, 0, 0, 26);
+      grad.addColorStop(0, "#C92A45");
+      grad.addColorStop(0.5, "#8E1029");
+      grad.addColorStop(1, "#4A0314");
+      sctx.fillStyle = grad;
+      sctx.fill();
+      sctx.strokeStyle = "rgba(255, 215, 0, 0.4)";
+      sctx.lineWidth = 0.8;
+      sctx.stroke();
+      return s;
+    };
+
+    const createMarigoldSprite = () => {
+      const s = document.createElement("canvas");
+      s.width = 30;
+      s.height = 40;
+      const sctx = s.getContext("2d");
+      if (!sctx) return s;
+      sctx.translate(15, 20);
+      sctx.beginPath();
+      sctx.ellipse(0, 0, 8, 17, 0, 0, Math.PI * 2);
+      const grad = sctx.createLinearGradient(0, -17, 0, 17);
+      grad.addColorStop(0, "#FFE066");
+      grad.addColorStop(0.5, "#FF9900");
+      grad.addColorStop(1, "#CC4400");
+      sctx.fillStyle = grad;
+      sctx.fill();
+      sctx.strokeStyle = "rgba(255, 235, 150, 0.4)";
+      sctx.lineWidth = 0.6;
+      sctx.stroke();
+      return s;
+    };
+
+    const roseSprite = createRoseSprite();
+    const marigoldSprite = createMarigoldSprite();
 
     const petals: Petal[] = [];
 
@@ -48,15 +98,14 @@ export function PetalsCanvas() {
       petals.push({
         x: Math.random() * width,
         y: Math.random() * height - height,
-        size: Math.random() * 10 + 9,
-        speedY: Math.random() * 1.2 + 0.6,
-        speedX: Math.random() * 0.8 - 0.4,
+        size: Math.random() * 8 + 10,
+        speedY: Math.random() * 0.9 + 0.5,
+        speedX: Math.random() * 0.6 - 0.3,
         rotation: Math.random() * 360,
-        rotationSpeed: (Math.random() - 0.5) * 1.8,
+        rotationSpeed: (Math.random() - 0.5) * 1.5,
         type: Math.random() > 0.4 ? "rose" : "marigold",
-        opacity: Math.random() * 0.45 + 0.4,
+        opacity: Math.random() * 0.35 + 0.45,
         oscillationSpeed: Math.random() * 0.02 + 0.01,
-        oscillationDistance: Math.random() * 40 + 20,
         seed: Math.random() * 100,
       });
     }
@@ -66,15 +115,14 @@ export function PetalsCanvas() {
       petals.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        size: Math.random() * 2.5 + 1.2,
-        speedY: Math.random() * 0.4 + 0.15,
-        speedX: (Math.random() - 0.5) * 0.3,
+        size: Math.random() * 2 + 1,
+        speedY: Math.random() * 0.3 + 0.1,
+        speedX: (Math.random() - 0.5) * 0.2,
         rotation: 0,
         rotationSpeed: 0,
         type: "goldDust",
-        opacity: Math.random() * 0.6 + 0.2,
-        oscillationSpeed: Math.random() * 0.03 + 0.01,
-        oscillationDistance: Math.random() * 15 + 5,
+        opacity: Math.random() * 0.5 + 0.25,
+        oscillationSpeed: Math.random() * 0.025 + 0.01,
         seed: Math.random() * 100,
       });
     }
@@ -91,73 +139,24 @@ export function PetalsCanvas() {
     const drawPetal = (p: Petal) => {
       ctx.save();
       ctx.translate(p.x, p.y);
-      ctx.rotate((p.rotation * Math.PI) / 180);
+      ctx.globalAlpha = p.opacity;
 
       if (p.type === "goldDust") {
-        // Glowing gold sparkle
-        const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, p.size * 2);
-        grad.addColorStop(0, `rgba(255, 238, 160, ${p.opacity})`);
-        grad.addColorStop(0.5, `rgba(212, 175, 55, ${p.opacity * 0.6})`);
-        grad.addColorStop(1, "rgba(212, 175, 55, 0)");
-
-        ctx.fillStyle = grad;
+        ctx.fillStyle = "#FFE885";
         ctx.beginPath();
-        ctx.arc(0, 0, p.size * 2, 0, Math.PI * 2);
+        ctx.arc(0, 0, p.size, 0, Math.PI * 2);
         ctx.fill();
-
-        ctx.fillStyle = `rgba(255, 255, 240, ${p.opacity})`;
-        ctx.beginPath();
-        ctx.arc(0, 0, p.size * 0.6, 0, Math.PI * 2);
-        ctx.fill();
-      } else if (p.type === "rose") {
-        // Crimson velvet rose petal
-        ctx.globalAlpha = p.opacity;
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.bezierCurveTo(
-          -p.size * 0.7,
-          -p.size * 0.6,
-          -p.size * 0.8,
-          p.size * 0.9,
-          0,
-          p.size * 1.3
-        );
-        ctx.bezierCurveTo(
-          p.size * 0.8,
-          p.size * 0.9,
-          p.size * 0.7,
-          -p.size * 0.6,
-          0,
-          0
-        );
-
-        const grad = ctx.createLinearGradient(0, 0, 0, p.size * 1.3);
-        grad.addColorStop(0, "#B81D35"); // vivid crimson
-        grad.addColorStop(0.5, "#800A24"); // deep wine
-        grad.addColorStop(1, "#450212"); // dark velvet
-        ctx.fillStyle = grad;
-        ctx.fill();
-
-        // Subtle gold edge highlight on petal
-        ctx.strokeStyle = "rgba(255, 215, 0, 0.35)";
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
       } else {
-        // Bright golden-orange Indian marigold petal
-        ctx.globalAlpha = p.opacity;
-        ctx.beginPath();
-        ctx.ellipse(0, 0, p.size * 0.45, p.size * 0.95, 0, 0, Math.PI * 2);
-
-        const grad = ctx.createLinearGradient(0, -p.size, 0, p.size);
-        grad.addColorStop(0, "#FFF099"); // bright marigold yellow
-        grad.addColorStop(0.5, "#FFA500"); // rich saffron orange
-        grad.addColorStop(1, "#D04B00"); // royal saffron
-        ctx.fillStyle = grad;
-        ctx.fill();
-
-        ctx.strokeStyle = "rgba(255, 235, 150, 0.4)";
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        const sprite = p.type === "rose" ? roseSprite : marigoldSprite;
+        const scale = p.size / 22;
+        ctx.drawImage(
+          sprite,
+          -sprite.width * scale * 0.5,
+          -sprite.height * scale * 0.5,
+          sprite.width * scale,
+          sprite.height * scale
+        );
       }
 
       ctx.restore();
@@ -177,14 +176,12 @@ export function PetalsCanvas() {
         for (let i = 0; i < petals.length; i++) {
           const p = petals[i];
 
-          // Fluttering wind & sway physics
           p.y += p.speedY;
-          p.x += Math.sin(tick * p.oscillationSpeed + p.seed) * 0.6 + p.speedX;
+          p.x += Math.sin(tick * p.oscillationSpeed + p.seed) * 0.5 + p.speedX;
           p.rotation += p.rotationSpeed;
 
-          // Wrap around top if off screen bottom
-          if (p.y > height + 40) {
-            p.y = -30;
+          if (p.y > height + 30) {
+            p.y = -25;
             p.x = Math.random() * width;
           }
           if (p.x < -30) p.x = width + 20;

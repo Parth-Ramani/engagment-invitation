@@ -10,7 +10,14 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    if (prefersReducedMotion) return;
+    // On touch devices / mobile, native scrolling is significantly smoother and eliminates touch lag
+    const isTouchDevice =
+      typeof window !== "undefined" &&
+      ("ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.innerWidth < 1024);
+
+    if (prefersReducedMotion || isTouchDevice) return;
 
     const lenis = new Lenis({
       duration: 1.2,

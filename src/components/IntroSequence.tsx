@@ -21,7 +21,7 @@ export function IntroSequence({ onComplete }: { onComplete: () => void }) {
     fireCelebrationConfetti();
     setTimeout(() => {
       onComplete();
-    }, 900);
+    }, 350);
   };
 
   const handleSkip = () => {
@@ -36,11 +36,10 @@ export function IntroSequence({ onComplete }: { onComplete: () => void }) {
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
-            scale: 1.05,
-            filter: "blur(10px)",
-            transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+            scale: 0.98,
+            transition: { duration: 0.35, ease: "easeOut" },
           }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-radial-maroon p-4 sm:p-6 overflow-hidden select-none"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-radial-maroon p-4 sm:p-6 overflow-hidden select-none will-change-[opacity,transform]"
         >
           {/* Subtle Ambient Glowing Background circles */}
           <div className="absolute w-[500px] h-[500px] rounded-full bg-gold-500/10 blur-[120px] pointer-events-none -top-20 -left-20 animate-pulse-subtle" />
