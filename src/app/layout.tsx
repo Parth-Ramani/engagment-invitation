@@ -40,7 +40,24 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+const getBaseUrl = (): URL => {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    const url = process.env.NEXT_PUBLIC_SITE_URL.startsWith("http")
+      ? process.env.NEXT_PUBLIC_SITE_URL
+      : `https://${process.env.NEXT_PUBLIC_SITE_URL}`;
+    return new URL(url);
+  }
+  if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
+    return new URL(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`);
+  }
+  if (process.env.VERCEL_URL) {
+    return new URL(`https://${process.env.VERCEL_URL}`);
+  }
+  return new URL("http://localhost:3000");
+};
+
 export const metadata: Metadata = {
+  metadataBase: getBaseUrl(),
   title: `${EVENT_DETAILS.couple.combined} — Engagement Ceremony Invitation`,
   description: `${EVENT_DETAILS.blessings.invitationQuote} ${EVENT_DETAILS.event.day}, ${EVENT_DETAILS.event.dateFormatted} at ${EVENT_DETAILS.event.time}. ${EVENT_DETAILS.venue.name}, Junagadh, Gujarat.`,
   keywords: [
@@ -56,18 +73,40 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${EVENT_DETAILS.couple.combined} — Engagement Ceremony Invitation`,
     description: `Celebrate with us on ${EVENT_DETAILS.event.day}, ${EVENT_DETAILS.event.dateFormatted} at ${EVENT_DETAILS.venue.name}, Junagadh.`,
-    url: "https://parth-ankita-engagement.com",
+    url: "/",
     siteName: `${EVENT_DETAILS.couple.combined} Engagement`,
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: `${EVENT_DETAILS.couple.combined} Engagement Ceremony Invitation`,
+      },
+      {
+        url: "/og-image-square.jpg",
+        width: 800,
+        height: 800,
+        alt: `${EVENT_DETAILS.couple.combined} Engagement Ceremony Invitation`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${EVENT_DETAILS.couple.combined} — Engagement Ceremony`,
     description: `Thursday, ${EVENT_DETAILS.event.dateFormatted} at 10:30 AM at ${EVENT_DETAILS.venue.name}, Junagadh.`,
+    images: ["/og-image.jpg"],
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
 };
 
