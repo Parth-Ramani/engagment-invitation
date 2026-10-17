@@ -16,12 +16,40 @@ export function AudioPlayer({ embedded = false }: AudioPlayerProps) {
 
   useEffect(() => {
     setMounted(true);
-    if (ambientAudio) {
-      const unsubscribe = ambientAudio.subscribe((playing) => {
-        setIsPlaying(playing);
-      });
-      return () => unsubscribe();
-    }
+    if (!ambientAudio) return;
+
+    const unsubscribe = ambientAudio.subscribe((playing) => {
+      setIsPlaying(playing);
+    });
+
+    // 1. Attempt autoplay immediately
+    ambientAudio.play();
+
+    // 2. On mobile devices, browsers restrict autoplay until the user interacts.
+    // Unmute and start music immediately upon first touch, click, or scroll.
+    const unlockAudio = () => {
+      if (ambientAudio && !ambientAudio.getIsPlaying()) {
+        ambientAudio.play();
+      }
+      cleanup();
+    };
+
+    const cleanup = () => {
+      window.removeEventListener("touchstart", unlockAudio);
+      window.removeEventListener("touchend", unlockAudio);
+      window.removeEventListener("click", unlockAudio);
+      window.removeEventListener("scroll", unlockAudio);
+    };
+
+    window.addEventListener("touchstart", unlockAudio, { passive: true, once: true });
+    window.addEventListener("touchend", unlockAudio, { passive: true, once: true });
+    window.addEventListener("click", unlockAudio, { once: true });
+    window.addEventListener("scroll", unlockAudio, { passive: true, once: true });
+
+    return () => {
+      unsubscribe();
+      cleanup();
+    };
   }, []);
 
   const handleToggle = () => {

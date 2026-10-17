@@ -32,8 +32,8 @@ class InvitationAudioPlayer {
     try {
       this.audio = new Audio();
       this.audio.loop = true;
-      this.audio.preload = "none";
-      this.audio.volume = 0.75;
+      this.audio.preload = "auto";
+      this.audio.volume = 0.8;
       this.audio.src = this.audioSources[this.currentSourceIndex];
 
       this.audio.addEventListener("play", () => {

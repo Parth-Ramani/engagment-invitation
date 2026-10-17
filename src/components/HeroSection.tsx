@@ -6,6 +6,7 @@ import { EVENT_DETAILS } from "@/lib/event";
 import { useLanguage } from "@/context/LanguageContext";
 import { RoyalMonogram, GoldDivider } from "./Ornaments";
 import { fireCelebrationConfetti } from "@/lib/celebrate";
+import { ambientAudio } from "@/lib/audio";
 import { Calendar, Clock, ChevronDown, Sparkles } from "lucide-react";
 
 export function HeroSection() {
@@ -115,7 +116,12 @@ export function HeroSection() {
           className="mt-6 sm:mt-8"
         >
           <button
-            onClick={fireCelebrationConfetti}
+            onClick={() => {
+              fireCelebrationConfetti();
+              if (ambientAudio && !ambientAudio.getIsPlaying()) {
+                ambientAudio.play();
+              }
+            }}
             className="group px-6 py-2.5 rounded-full bg-royal-wine/80 hover:bg-royal-deepRuby border border-gold-400/50 hover:border-gold-300 text-gold-200 hover:text-gold-100 text-xs sm:text-sm font-sans tracking-wide uppercase transition-all duration-300 flex items-center gap-2 shadow-[0_4px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_0_25px_rgba(212,175,55,0.4)]"
           >
             <Sparkles className="w-3.5 h-3.5 text-gold-400 group-hover:rotate-12 transition-transform" />
