@@ -49,7 +49,8 @@ export function ProposalArchSection() {
               src="/images/parth-ankita-proposal.jpg"
               alt="Parth and Ankita Proposal Ring Ceremony Illustration under Peacock Floral Arch"
               className="w-full h-auto max-h-[78vh] object-contain mx-auto drop-shadow-[0_15px_35px_rgba(0,0,0,0.14)] transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-              loading="eager"
+              loading="lazy"
+              decoding="async"
             />
           </picture>
         </motion.div>

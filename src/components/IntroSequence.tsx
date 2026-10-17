@@ -13,6 +13,10 @@ export function IntroSequence({ onComplete }: { onComplete: () => void }) {
   const [withMusic, setWithMusic] = useState(true);
   const [isOpening, setIsOpening] = useState(false);
 
+  if (typeof window !== "undefined" && (window.innerWidth < 768 || "ontouchstart" in window)) {
+    return null;
+  }
+
   const handleOpen = () => {
     setIsOpening(true);
     if (withMusic && ambientAudio) {

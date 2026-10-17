@@ -12,6 +12,9 @@ export function LanguageSelectorModal() {
   const { hasChosenLanguage, setLanguage } = useLanguage();
 
   if (hasChosenLanguage) return null;
+  if (typeof window !== "undefined" && (window.innerWidth < 768 || "ontouchstart" in window)) {
+    return null;
+  }
 
   const handleSelectLanguage = (lang: Language) => {
     setLanguage(lang);
