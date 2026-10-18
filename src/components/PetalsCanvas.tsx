@@ -163,13 +163,26 @@ export function PetalsCanvas() {
     };
 
     let isDocumentVisible = true;
+    let isScrolling = false;
+    let scrollTimeout: NodeJS.Timeout;
+
     const handleVisibilityChange = () => {
       isDocumentVisible = !document.hidden;
     };
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
+    const handleScroll = () => {
+      if (!isMobile) return;
+      isScrolling = true;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+      }, 120);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     const render = () => {
-      if (isDocumentVisible) {
+      if (isDocumentVisible && (!isMobile || !isScrolling)) {
         ctx.clearRect(0, 0, width, height);
         tick += 1;
 
@@ -199,6 +212,7 @@ export function PetalsCanvas() {
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);

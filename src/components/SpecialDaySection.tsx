@@ -12,10 +12,10 @@ export function SpecialDaySection() {
   return (
     <section className="relative py-16 sm:py-24 px-4 sm:px-6 max-w-4xl mx-auto text-center">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.9 }}
+        viewport={{ once: true, margin: "150px 0px 0px 0px" }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
         className="relative p-6 sm:p-10 md:p-14 rounded-3xl bg-royal-card border border-gold-400/30 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
       >
         {/* Subtle Palace Architecture Silhouette */}

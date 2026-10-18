@@ -25,10 +25,10 @@ export function ClosingSection() {
       <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
         {/* Monogram Seal */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
+          viewport={{ once: true, margin: "150px 0px 0px 0px" }}
+          transition={{ duration: 0.4 }}
           className="mb-8"
         >
           <RoyalMonogram initials={EVENT_DETAILS.couple.monogram} />
@@ -36,10 +36,10 @@ export function ClosingSection() {
 
         {/* Final Quote */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9, delay: 0.2 }}
+          viewport={{ once: true, margin: "150px 0px 0px 0px" }}
+          transition={{ duration: 0.4 }}
           className="space-y-3 mb-6"
         >
           <p className="font-script text-3xl sm:text-4xl md:text-5xl text-gold-300 drop-shadow-[0_2px_15px_rgba(212,175,55,0.4)] break-keep">
@@ -52,10 +52,10 @@ export function ClosingSection() {
 
         {/* Couple Names */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.4 }}
+          viewport={{ once: true, margin: "150px 0px 0px 0px" }}
+          transition={{ duration: 0.4 }}
           className="my-3"
         >
           <h2 className="font-serif italic font-bold text-4xl sm:text-6xl md:text-7xl text-gold-gradient py-2 break-keep">
@@ -67,10 +67,10 @@ export function ClosingSection() {
 
         {/* Closing Event Summary */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          viewport={{ once: true, margin: "150px 0px 0px 0px" }}
+          transition={{ duration: 0.4 }}
           className="space-y-2 text-gold-200 font-serif"
         >
           <p className="text-lg sm:text-xl font-bold tracking-wide break-keep">
@@ -83,10 +83,10 @@ export function ClosingSection() {
 
         {/* Celebration Confetti Button */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          viewport={{ once: true, margin: "150px 0px 0px 0px" }}
+          transition={{ duration: 0.4 }}
           className="mt-8 mb-12"
         >
           <button

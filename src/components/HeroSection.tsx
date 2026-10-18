@@ -36,9 +36,9 @@ export function HeroSection() {
       <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
         {/* Monogram Seal */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, y: -20 }}
+          initial={{ opacity: 0, scale: 0.9, y: -10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 0.4 }}
           className="mb-6 sm:mb-8"
         >
           <RoyalMonogram initials={EVENT_DETAILS.couple.monogram} />
@@ -46,9 +46,9 @@ export function HeroSection() {
 
         {/* Lead calligraphy */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.4, delay: 0.05 }}
           className="mb-2 sm:mb-3"
         >
           <p className="font-script text-2xl sm:text-3xl md:text-4xl text-gold-300 drop-shadow-[0_2px_10px_rgba(212,175,55,0.4)] break-keep">
@@ -58,9 +58,9 @@ export function HeroSection() {
 
         {/* Centerpiece: The Couple's Names */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.94 }}
+          initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, delay: 0.6 }}
+          transition={{ duration: 0.45, delay: 0.1 }}
           className="relative my-2 sm:my-4 px-4 py-2"
         >
           <div className="absolute inset-0 bg-gold-500/5 blur-2xl rounded-full pointer-events-none" />
@@ -71,9 +71,9 @@ export function HeroSection() {
 
         {/* Event Title */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.4, delay: 0.15 }}
           className="space-y-1 mb-4 sm:mb-6"
         >
           <h2 className="font-royal text-lg sm:text-2xl md:text-3xl font-semibold tracking-[0.25em] uppercase text-gold-200 break-keep">
@@ -88,9 +88,9 @@ export function HeroSection() {
 
         {/* Coordinated Date & Time Reveal */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
           className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 my-3 text-gold-100 text-sm sm:text-lg font-serif"
         >
           <div className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-royal-maroon/60 border border-gold-500/30 backdrop-blur-sm shadow-[0_4px_15px_rgba(0,0,0,0.4)]">
@@ -110,9 +110,9 @@ export function HeroSection() {
 
         {/* Interactive Celebrate Button */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
+          transition={{ duration: 0.4, delay: 0.25 }}
           className="mt-6 sm:mt-8"
         >
           <button

@@ -24,10 +24,10 @@ export function ProposalArchSection() {
 
         {/* Animated Artwork Wrapper */}
         <motion.div
-          initial={{ opacity: 0, y: 35, scale: 0.96 }}
+          initial={{ opacity: 0, y: 15, scale: 0.98 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: "150px 0px 0px 0px" }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
           onClick={() => fireCelebrationConfetti()}
           className="relative w-full max-w-[92vw] sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto flex items-center justify-center cursor-pointer group select-none"
           title="Parth & Ankita · Tap to Celebrate! 🎉"

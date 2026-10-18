@@ -12,10 +12,10 @@ export function FamilySection() {
   return (
     <section className="relative py-16 sm:py-24 px-4 sm:px-6 max-w-4xl mx-auto">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 1 }}
+        viewport={{ once: true, margin: "150px 0px 0px 0px" }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
       >
         <RoyalArchFrame className="text-center">
           {/* Traditional Toran / Auspicious Floral Top */}
