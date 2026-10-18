@@ -102,7 +102,7 @@ export function ClosingSection() {
         <div className="pt-8 border-t border-gold-500/15 w-full flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-gold-400/70">
           <p className="flex items-center gap-1.5 font-serif text-sm text-gold-300/90 break-keep">
             <span>{t.withComplimentsLabel}</span>
-            <strong className="text-gold-200">{t.familyName}</strong>
+            <strong className="text-gold-200">{t.complimentsName}</strong>
           </p>
 
           <button

@@ -37,9 +37,9 @@ export function FamilySection() {
               {t.inviterName}
             </h2>
 
-            {/* Ramani Family */}
+            {/* Family Subheading */}
             <p className="font-royal text-xl sm:text-2xl md:text-3xl font-semibold tracking-wide uppercase text-gold-200 mt-3 break-keep">
-              &amp; {t.familyName}
+              {t.familyName}
             </p>
           </div>
 

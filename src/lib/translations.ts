@@ -77,6 +77,7 @@ export interface TranslationSchema {
   celebrateWithUsBtn: string;
   showerBlessingsBtn: string;
   withComplimentsLabel: string;
+  complimentsName: string;
   backToTopBtn: string;
   scrollExplore: string;
 }
@@ -148,17 +149,17 @@ export const TRANSLATIONS: Record<Language, TranslationSchema> = {
     getDirectionsBtn: "Get Directions",
     copyAddressBtn: "Copy Address",
     addressCopiedBtn: "Address Copied!",
-    familySectionTitle: "Family Invitation",
-    inviterPrefix: "Invited with love by",
-    inviterName: "Shaileshbhai Nanjibhai Ramani",
-    familyName: "Ramani Family",
+    familySectionTitle: "Auspicious Invitation",
+    inviterPrefix: "Together with our families",
+    inviterName: "Parth & Ankita",
+    familyName: "Cordially Invite You",
     familySubtext:
-      "Cordially seek your gracious presence and heartfelt blessings",
-    contactSectionTitle: "RSVP & Contact",
+      "With the blessings of our elders and the love of both families, we warmly seek your gracious presence and heartfelt blessings.",
+    contactSectionTitle: "Venue Assistance & Contact",
     contactSectionSubtitle: "We are here to assist you",
     contactPrompt:
-      "For venue directions, assistance, or to share your warm wishes with the family:",
-    directContactLabel: "Direct Contact",
+      "For venue directions, event assistance, or to share your warm wishes:",
+    directContactLabel: "Event Helpline",
     phoneNumber: "97375 59903",
     callDirectlyBtn: "Call Directly",
     whatsappMessageBtn: "WhatsApp Message",
@@ -166,10 +167,11 @@ export const TRANSLATIONS: Record<Language, TranslationSchema> = {
       "Heartiest congratulations Parth and Ankita! Looking forward to celebrating with you.",
     closingQuote: "Your presence will make our celebration even more special.",
     closingSubquote:
-      "Together with our families, we look forward to welcoming you.",
+      "Together with both families, we look forward to welcoming you.",
     celebrateWithUsBtn: "Celebrate With Us",
     showerBlessingsBtn: "Shower Blessings & Celebrate",
     withComplimentsLabel: "With Best Compliments:",
+    complimentsName: "Both Families & Well-Wishers",
     backToTopBtn: "Back to Top",
     scrollExplore: "Scroll to explore",
   },
@@ -240,16 +242,16 @@ export const TRANSLATIONS: Record<Language, TranslationSchema> = {
     copyAddressBtn: "સરનામું કોપી કરો",
     addressCopiedBtn: "સરનામું કોપી થયું!",
     familySectionTitle: "સ્નેહ નિમંત્રણ",
-    inviterPrefix: "સ્નેહભર્યું નિમંત્રણ પાઠવનાર",
-    inviterName: "શૈલેષભાઈ નાનજીભાઈ રામાણી",
-    familyName: "રામાણી પરિવાર",
+    inviterPrefix: "પરિવારના સ્નેહ અને વડીલોના આશીર્વાદ સાથે",
+    inviterName: "પાર્થ અને અંકિતા",
+    familyName: "આપ સર્વેનું ભાવભર્યું સ્વાગત કરે છે",
     familySubtext:
-      "આપશ્રીની સપ્રેમ ઉપસ્થિતિ અને આશીર્વાદ અપેક્ષિત છે",
-    contactSectionTitle: "સંપર્ક અને માહિતી",
+      "વડીલોના મંગલ આશીર્વાદ અને બંને પરિવારોના સ્નેહ સાથે, આપ સર્વે સ્નેહીજનોને અમારા આ મંગલ અવસરમાં પધારવા ભાવભર્યું નિમંત્રણ છે.",
+    contactSectionTitle: "સંપર્ક અને માર્ગદર્શન",
     contactSectionSubtitle: "આપના માર્ગદર્શન માટે અમે હાજર છીએ",
     contactPrompt:
       "સ્થળની માહિતી, શુભેચ્છા અથવા અન્ય કોઈ સહાય માટે અમારો સંપર્ક કરો:",
-    directContactLabel: "મોબાઈલ નંબર",
+    directContactLabel: "સહાયતા નંબર",
     phoneNumber: "97375 59903",
     callDirectlyBtn: "સીધો કૉલ કરો",
     whatsappMessageBtn: "વ્હોટ્સએપ પર મેસેજ મોકલો",
@@ -257,10 +259,11 @@ export const TRANSLATIONS: Record<Language, TranslationSchema> = {
       "પાર્થ અને અંકિતાને સગાઈની ખૂબ ખૂબ શુભેચ્છાઓ અને અભિનંદન!",
     closingQuote: "આપની પાવન ઉપસ્થિતિ અમારા આ મંગલ અવસરની શોભા વધારશે.",
     closingSubquote:
-      "સમગ્ર રામાણી પરિવાર વતી આપ સર્વે સ્નેહીજનોનું હાર્દિક સ્વાગત છે.",
+      "બંને પરિવાર વતી આપ સર્વે સ્નેહીજનોનું હાર્દિક સ્વાગત છે.",
     celebrateWithUsBtn: "અમારી સાથે ઉજવણી કરો",
     showerBlessingsBtn: "આશીર્વાદ અને પુષ્પવૃષ્ટિ કરો",
     withComplimentsLabel: "લિ. સ્નેહાધીન:",
+    complimentsName: "બંને પરિવારના સર્વે સ્નેહીજનો",
     backToTopBtn: "ઉપર જાઓ",
     scrollExplore: "નીચે સ્ક્રોલ કરો",
   },

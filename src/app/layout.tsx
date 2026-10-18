@@ -65,11 +65,11 @@ export const metadata: Metadata = {
     "Engagement Invitation",
     "Engagement Ceremony",
     "Madhuvan Farm Junagadh",
-    "Ramani Family",
+    "Parth & Ankita Engagement",
     "Gujarati Wedding Invitation",
     "Indian Engagement Ceremony",
   ],
-  authors: [{ name: "Ramani Family" }],
+  authors: [{ name: "Parth & Ankita" }],
   openGraph: {
     title: `${EVENT_DETAILS.couple.combined} — Engagement Ceremony Invitation`,
     description: `Celebrate with us on ${EVENT_DETAILS.event.day}, ${EVENT_DETAILS.event.dateFormatted} at ${EVENT_DETAILS.venue.name}, Junagadh.`,

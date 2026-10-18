@@ -96,9 +96,9 @@ export const EVENT_DETAILS: EventDetails = {
       "https://www.google.com/maps/dir/?api=1&destination=Madhuvan+Farm+Madhuvan+Party+Plot+Junagadh+Bypass+Joshipura+Khalilpur+Junagadh+Gujarat+362002",
   },
   family: {
-    inviterPrefix: "Invited with love by",
-    inviter: "Shaileshbhai Nanjibhai Ramani",
-    familyGroup: "Ramani Family",
+    inviterPrefix: "Together with our families",
+    inviter: "Parth & Ankita",
+    familyGroup: "Both Families",
     subtext: "Cordially seek your gracious presence and heartfelt blessings",
   },
   contact: {
