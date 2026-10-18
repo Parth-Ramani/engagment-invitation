@@ -15,7 +15,6 @@ import { ProposalArchSection } from "@/components/ProposalArchSection";
 import { DateSection } from "@/components/DateSection";
 import { VenueSection } from "@/components/VenueSection";
 import { FamilySection } from "@/components/FamilySection";
-import { ContactSection } from "@/components/ContactSection";
 import { ClosingSection } from "@/components/ClosingSection";
 
 function InvitationContent() {
@@ -64,7 +63,6 @@ function InvitationContent() {
           <DateSection />
           <VenueSection />
           <FamilySection />
-          <ContactSection />
           <ClosingSection />
         </div>
       </main>
